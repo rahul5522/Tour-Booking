@@ -5,7 +5,7 @@ const ac = require("../Controller/authController");
 const router = express.Router();
 
 router.use(ac.protect);
-
+//Adding Comment
 router.get("/create-payment-session/:tourID", bc.createSession);
 
 router.use(ac.restrictTo("admin", "lead-guide"));
