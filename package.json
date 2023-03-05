@@ -7,7 +7,7 @@
     "main": false
   },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",
     "debug": "ndb server.js",
     "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
