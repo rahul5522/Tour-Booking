@@ -9,6 +9,7 @@ const XSS = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
+const cors = require("cors");
 
 const createNewError = require("./utils/createNewError");
 const errorController = require("./Controller/errorController");
@@ -29,6 +30,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //Inbuilt Global Middleware to read json body
 app.use(express.json({ limit: "10kb" }));
 
+app.use(cors());
+
+app.options("*", cors());
 //To get the ookies in request header from client browser
 app.use(cookieParser());
 app.use(express.urlencoded({ limit: "10kb" }));
