@@ -58,8 +58,8 @@ const filterBody = (body, ...select) => {
 exports.getAllUsers = factory.getAll(User);
 
 exports.updateMe = catchAsyncError(async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
+  // console.log(req.file);
+  // console.log(req.body);
   if (req.body.password || req.body.passwordConfirm) {
     return next(
       new createNewError("To update password use 'updatepassword' route", 400)

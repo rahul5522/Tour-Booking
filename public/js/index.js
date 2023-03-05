@@ -38,7 +38,7 @@ if (document.querySelector(".signupForm")) {
 
 //Update Form
 if (document.querySelector(".form-user-data")) {
-  console.log("User form");
+  // console.log("User form");
   document.querySelector(".form-user-data").addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -52,7 +52,7 @@ if (document.querySelector(".form-user-data")) {
 }
 
 if (document.querySelector(".form-user-password")) {
-  console.log("Password form");
+  // console.log("Password form");
   document
     .querySelector(".form-user-password")
     .addEventListener("submit", async (e) => {

@@ -51,7 +51,7 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 reviewSchema.statics.calcAverageRatings = async function (tourId) {
-  console.log("Inside Average Calculator");
+  // console.log("Inside Average Calculator");
   const stats = await this.aggregate([
     {
       $match: { tour: tourId },
@@ -64,7 +64,7 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
       },
     },
   ]);
-  console.log(stats);
+  // console.log(stats);
 
   //Just doing console log not work we need to chnage field in tour model
 
@@ -89,7 +89,7 @@ reviewSchema.post("save", function () {
 
 //Re-calculating RatingsAverage after New review Updated or Deleted
 reviewSchema.post(/^findOneAnd/, async function (doc) {
-  console.log(doc.tour);
+  // console.log(doc.tour);
 
   await doc.constructor.calcAverageRatings(doc.tour);
 });

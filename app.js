@@ -66,7 +66,7 @@ app.use(compression());
 
 //Custom Middleware
 app.use((req, res, next) => {
-  console.log("Hi Custom middleware");
+  // console.log("Hi Custom middleware");
   // console.log("Headers:", req.headers.cookie);
   // console.log(req.cookies);
   next();

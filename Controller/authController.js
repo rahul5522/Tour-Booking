@@ -59,10 +59,10 @@ exports.login = catchAsyncError(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email: email }).select("+password");
-  console.log(password);
+  // console.log(password);
   if (user) {
     const result = await user.comparePassword(password, user.password);
-    console.log(result);
+    // console.log(result);
 
     if (result) {
       createAndSendToken(res, user, 200, "Successfully logged IN");
@@ -95,7 +95,7 @@ exports.protect = catchAsyncError(async (req, res, next) => {
   }
 
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decode);
+  // console.log(decode);
 
   const user = await User.findById(decode.id);
 

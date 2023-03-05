@@ -16,7 +16,7 @@ const handleValidationError = (err) => {
   //   .map((i) => i.message)
   //   .join(",");
 
-  console.log(err.message);
+  // console.log(err.message);
   // const message = `Validation Error`;
   return new createNewError(err.message, 400);
 };
