@@ -8,6 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const XSS = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const createNewError = require("./utils/createNewError");
 const errorController = require("./Controller/errorController");
@@ -60,6 +61,8 @@ const limiter = rateLimit({
 });
 
 app.use("/api", limiter);
+
+app.use(compression());
 
 //Custom Middleware
 app.use((req, res, next) => {
