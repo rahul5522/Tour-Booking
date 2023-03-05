@@ -13,6 +13,7 @@ const cors = require("cors");
 
 const createNewError = require("./utils/createNewError");
 const errorController = require("./Controller/errorController");
+const bookingController = require("./Controller/bookingController");
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRouter");
@@ -26,6 +27,12 @@ app.set("views", path.join(__dirname, "views"));
 
 //Middleware To access Static Files
 app.use(express.static(path.join(__dirname, "public")));
+
+app.post(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  bookingController.webhookCheckout
+);
 
 //Inbuilt Global Middleware to read json body
 app.use(express.json({ limit: "10kb" }));
