@@ -60,8 +60,8 @@ const createBooking = async (session) => {
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email }))._id;
   const price = session.amount_total / 100;
-  
-  console.log(tour,user,price)
+
+  // console.log(tour,user,price)
 
   await Booking.create({ tour, user, price });
 };
@@ -69,7 +69,7 @@ const createBooking = async (session) => {
 exports.webhookCheckout = (req, res) => {
   const signature = req.headers["stripe-signature"];
 
-  console.log("Entered1");
+  // console.log("Entered1");
   let event;
 
   try {
@@ -83,7 +83,7 @@ exports.webhookCheckout = (req, res) => {
   }
 
   if (event.type === "checkout.session.completed") {
-    console.log("Entered2");
+    // console.log("Entered2");
     createBooking(event.data.object);
   }
 
