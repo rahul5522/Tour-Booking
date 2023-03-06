@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import axios from "axios";
 import { showAlert } from "./alert";
-import { hideAlert } from "./alert";
 
 export const loginUser = async (email, password) => {
   try {

@@ -563,6 +563,7 @@ var _signup = require("../js/signup");
 var _logout = require("./logout");
 var _updateUser = require("../js/updateUser");
 var _bookTour = require("./bookTour");
+var _alert = require("./alert");
 // console.log(document);
 // console.log("Index-form");
 if (document.querySelector(".form")) {
@@ -620,8 +621,10 @@ if (bookingBtn) bookingBtn.addEventListener("click", (e)=>{
     const tourID = e.target.dataset.tour_id;
     (0, _bookTour.bookTour)(tourID);
 });
+const alertMessage = document.querySelector("body").dataset.alert;
+if (alertMessage) (0, _alert.showAlert)("success", alertMessage);
 
-},{"@babel/polyfill":"dTCHC","../js/login":"7yHem","../js/signup":"fNY2o","./logout":"1ftRF","../js/updateUser":"575AG","./bookTour":"7d23e"}],"dTCHC":[function(require,module,exports) {
+},{"@babel/polyfill":"dTCHC","../js/login":"7yHem","../js/signup":"fNY2o","./logout":"1ftRF","../js/updateUser":"575AG","./bookTour":"7d23e","./alert":"kxdiQ"}],"dTCHC":[function(require,module,exports) {
 "use strict";
 require("579f7ee468503cda");
 var _global = _interopRequireDefault(require("65b7f54b9d72c417"));

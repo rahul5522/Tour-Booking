@@ -6,6 +6,8 @@ const router = express.Router();
 
 // router.use(ac.isLoogedIn);
 
+router.use(bc.alerts);
+
 router.get("/", ac.isLoogedIn, vc.getOverview);
 
 router.get("/login", ac.isLoogedIn, vc.getLoginForm);

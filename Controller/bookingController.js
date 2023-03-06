@@ -6,6 +6,16 @@ const createNewError = require("../utils/createNewError");
 const stripe = require("stripe")(process.env.STRIPE_SECRETKEY);
 const factory = require("../Controller/handleFactory");
 
+exports.alerts = (req, res, next) => {
+  const { alert } = req.query;
+
+  if (alert === "booking") {
+    res.locals.alert =
+      "Your booking was successful, please reload the bookings page to see the changes!!";
+  }
+  next();
+};
+
 exports.createSession = catchAsyncError(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourID);
 
@@ -29,7 +39,9 @@ exports.createSession = catchAsyncError(async (req, res, next) => {
       // success_url: `${req.protocol}://${req.get("host")}/myBooking/?tour=${
       //   req.params.tourID
       // }&user=${req.user.id}&price=${tour.price}`,
-      success_url: `${req.protocol}://${req.get("host")}/myBooking`,
+      success_url: `${req.protocol}://${req.get(
+        "host"
+      )}/myBooking?alert=booking`,
       cancel_url: `${req.protocol}://${req.get("host")}/tour/${tour.slug}`,
       customer_email: req.user.email,
       client_reference_id: req.params.tourID,
